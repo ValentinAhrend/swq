@@ -20,7 +20,7 @@ public class SService {
         this.sDao = sDao;
     }
 
-    public int checkData(S data){
+    public String checkData(S data){
         return sDao.checkS(data);
     }
     

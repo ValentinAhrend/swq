@@ -7,9 +7,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.nio.file.Path;
-import java.time.Duration;
-import java.util.Map;
 
 import com.ess.spind.model.S;
 
@@ -17,18 +14,15 @@ import org.json.JSONObject;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.springframework.boot.json.JsonParser;
 import org.springframework.stereotype.Repository;
 
-import io.netty.handler.codec.json.JsonObjectDecoder;
 
 @Repository("d300")
 public class AccessService implements SDao{
     
     @Override
-    public int checkS(S data) {
+    public String checkS(S data) {
         
         /*
 
@@ -55,12 +49,13 @@ public class AccessService implements SDao{
         }
     }
 
-    private int init(String name, String pw){
+    private String init(String name, String pw){
     //    System.setProperty("webdriver.http.factory", "apache");
  
     
         System.setProperty("webdriver.chrome.driver", getFileFromURL("static/chromedriver").getAbsolutePath());
         driver = new ChromeDriver();
+        
     
         WebDriverWait wait = new WebDriverWait(driver, 10000);
     
@@ -118,7 +113,7 @@ public class AccessService implements SDao{
             
              System.out.println("!!"+datas);
              if(datas.equals("0") || !datas.startsWith("{")){
-                return -1;
+                return "-1";
              }else {
                 
                 
@@ -131,9 +126,9 @@ public class AccessService implements SDao{
 
                     
 
-                    return 1;
+                    return "1";
 
-                 }else return -2;
+                 }else return "-2";
              }
 
              
@@ -148,7 +143,7 @@ public class AccessService implements SDao{
 
         }catch(Exception e){
             e.printStackTrace();
-            return -5;
+            return e.getMessage();
         }
 
     }
