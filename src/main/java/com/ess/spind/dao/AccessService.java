@@ -87,7 +87,7 @@ try{
         driver = new ChromeDriver(options);
 
     
-       // WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(10000));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(10000));
     
         String src;
         if(codec == null){
