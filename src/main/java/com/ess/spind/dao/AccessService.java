@@ -3,19 +3,24 @@ package com.ess.spind.dao;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.URISyntaxException;
 import java.net.URL;
 
 import com.ess.spind.model.S;
 
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.json.JSONObject;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.springframework.boot.autoconfigure.couchbase.CouchbaseProperties.Io;
 import org.springframework.stereotype.Repository;
 
 
@@ -38,23 +43,14 @@ public class AccessService implements SDao{
 
     private static String codec;
 
-    private File getFileFromURL(String path) {
-        URL url = this.getClass().getClassLoader().getResource(path);
-        File file = null;
-        try {
-            file = new File(url.toURI());
-        } catch (URISyntaxException e) {
-            file = new File(url.getPath());
-        } finally {
-            return file;
-        }
-    }
+    
+    
 
     private String init(String name, String pw){
     //    System.setProperty("webdriver.http.factory", "apache");
  
     
-     //   System.setProperty("webdriver.chrome.driver", getFileFromURL("static/chromedriver").getAbsolutePath());
+        System.setProperty("webdriver.chrome.driver",(this.getClass().getClassLoader().getResource("static/chromedriver").getPath()));
         
         
         ChromeOptions options = new ChromeOptions();
@@ -70,7 +66,7 @@ public class AccessService implements SDao{
         if(codec == null){
         try{
     
-        FileInputStream fis = new FileInputStream(getFileFromURL("static/js"));
+        FileInputStream fis = new FileInputStream((this.getClass().getClassLoader().getResource("static/js.js").getPath()));
         InputStreamReader isr = new InputStreamReader(fis);
         BufferedReader bufferedReader = new BufferedReader(isr);
         sb = new StringBuilder();
