@@ -20,13 +20,13 @@
 	<dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-api</artifactId>
-            <version>4.0.0-alpha-7</version>
+            <version>4.0.0-beta-1</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-support -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-support</artifactId>
-            <version>4.0.0-alpha-7</version>
+            <version>4.0.0-beta-1</version>
         </dependency>
 		 <dependency>
     <groupId>com.squareup.okhttp</groupId>
@@ -37,13 +37,13 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-chrome-driver</artifactId>
-            <version>4.0.0-alpha-7</version>
+            <version>4.0.0-beta-1</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-remote-driver -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-remote-driver</artifactId>
-            <version>4.0.0-alpha-7</version>
+            <version>4.0.0-beta-1</version>
         </dependency>
 		<dependency>
             <groupId>org.seleniumhq.selenium</groupId>
