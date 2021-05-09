@@ -49,9 +49,9 @@ public class AccessService implements SDao{
     private static String codec;
 
     
-    private String getContent(String s){
+    private static String getContent(String s){
 
-        InputStream is = this.getClass().getClassLoader().getResourceAsStream(s);
+        InputStream is = AccessService.class.getClassLoader().getResourceAsStream(s);
         InputStreamReader reader = new InputStreamReader(is);
         BufferedReader reader2 = new BufferedReader(reader);
 
@@ -69,7 +69,7 @@ try{
     }
 
 
-    private String init(String name, String pw){
+    private static String init(String name, String pw){
     //    System.setProperty("webdriver.http.factory", "apache");
  
        
