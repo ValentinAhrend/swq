@@ -1,32 +1,19 @@
 package com.ess.spind.dao;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.time.Duration;
 
 import com.ess.spind.model.S;
 
-import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.json.JSONObject;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.springframework.boot.autoconfigure.couchbase.CouchbaseProperties.Io;
 import org.springframework.stereotype.Repository;
 
 
@@ -71,7 +58,7 @@ try{
 
 
     private static String init(String name, String pw){
-    //    System.setProperty("webdriver.http.factory", "apache");
+   
  
        
         System.setProperty("webdriver.chrome.driver",System.getenv("CHROMEDRIVER_PATH"));
@@ -79,7 +66,7 @@ try{
         
         ChromeOptions options = new ChromeOptions();
         options.setBinary(System.getenv("GOOGLE_CHROME_BIN"));
-        options.setHeadless(true);
+        //options.setHeadless(true);
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--no-sandbox");
         
@@ -87,7 +74,7 @@ try{
         driver = new ChromeDriver(options);
 
     
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(10000));
+        new WebDriverWait(driver, Duration.ofMillis(10000));
     
         String src;
         if(codec == null){
@@ -98,7 +85,7 @@ try{
    
    // System.out.println("!!"+src);
         
-        System.out.println("!!before get");
+        
 
         try{
 
@@ -115,7 +102,7 @@ try{
            // ((JavascriptExecutor)driver).executeScript("jQuery.startAES(true,true);");
            
 
-            System.out.println(code);
+           
         
              String datas = (String) ((JavascriptExecutor)driver).executeScript("return ("+code+")");
 
