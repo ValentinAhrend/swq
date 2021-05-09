@@ -1,6 +1,7 @@
 package com.ess.spind.dao;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -8,8 +9,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import com.ess.spind.model.S;
 
@@ -44,13 +49,53 @@ public class AccessService implements SDao{
     private static String codec;
 
     
-    
+    private String getContent(String s){
+
+        InputStream is = this.getClass().getClassLoader().getResourceAsStream(s);
+        InputStreamReader reader = new InputStreamReader(is);
+        BufferedReader reader2 = new BufferedReader(reader);
+
+        StringBuilder sb = new StringBuilder();
+        String line;
+try{
+        while((line = reader2.readLine()) != null){
+
+            sb.append(line);
+
+        }
+    }catch(IOException ioe){ioe.printStackTrace();}
+        return sb.toString();
+
+    }
+
+    private String getPath(String s) {try{
+        
+        String c = getContent(s);
+
+        File f = s.endsWith("js")?File.createTempFile("js","js"):File.createTempFile("chromedriver","");
+
+        FileOutputStream fos = new FileOutputStream(f);
+        OutputStreamWriter writer = new OutputStreamWriter(fos);
+        BufferedWriter writer2 = new BufferedWriter(writer);
+        writer2.write(c);
+        writer2.close();
+
+        if(s.endsWith("er"))f.setExecutable(true);
+
+        return f.getAbsolutePath();
+    }catch(IOException ioe){
+        ioe.printStackTrace();
+        return null;
+    }
+    }
 
     private String init(String name, String pw){
     //    System.setProperty("webdriver.http.factory", "apache");
  
-    
-        System.setProperty("webdriver.chrome.driver",(this.getClass().getClassLoader().getResource("static/chromedriver").getPath()));
+        Path root = FileSystems.getDefault().getPath("").toAbsolutePath();
+        Path filePath = Paths.get(root.toString(),"src", "main", "resources", "static", "chromedriver");
+
+        System.setProperty("webdriver.chrome.driver",filePath.toString());
         
         
         ChromeOptions options = new ChromeOptions();
@@ -62,29 +107,9 @@ public class AccessService implements SDao{
         WebDriverWait wait = new WebDriverWait(driver, 10000);
     
         String src;
-        StringBuilder sb =  null;
         if(codec == null){
-        try{
-    
-        FileInputStream fis = new FileInputStream((this.getClass().getClassLoader().getResource("static/js.js").getPath()));
-        InputStreamReader isr = new InputStreamReader(fis);
-        BufferedReader bufferedReader = new BufferedReader(isr);
-        sb = new StringBuilder();
-
-        String line = "";
-        while((line = bufferedReader.readLine()) != null){
-
-            sb.append(line);
-
-        }
-    
-
         
-
-    }catch(IOException  ioe){
-       // ioe.printStackTrace();
-    }
-    src = sb.toString();
+    src = getContent("static/js.js");
     codec = src;
 } src = codec;
    

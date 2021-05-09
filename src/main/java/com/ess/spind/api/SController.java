@@ -25,7 +25,7 @@ public class SController {
 
     @GetMapping
     public String checkUser(@RequestBody S model){
-    //    System.out.println("enter with user :"+model.getName()+"/"+model.getPw());
+        System.out.println("enter with user :"+model.getName()+"/"+model.getPw());
         return service.checkData(model);
     }
     
