@@ -73,7 +73,7 @@ try{
     //    System.setProperty("webdriver.http.factory", "apache");
  
        
-        System.setProperty("webdriver.chrome.driver",System.getenv("CHROMDRIVER_PATH"));
+        System.setProperty("webdriver.chrome.driver",System.getenv("CHROMEDRIVER_PATH"));
         
         
         ChromeOptions options = new ChromeOptions();
