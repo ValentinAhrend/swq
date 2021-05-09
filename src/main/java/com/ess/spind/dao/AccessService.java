@@ -73,11 +73,11 @@ try{
     //    System.setProperty("webdriver.http.factory", "apache");
  
        
-        System.setProperty("webdriver.chrome.driver",System.getenv("CHROMEDRIVER_PATH"));
-        
+        //System.setProperty("webdriver.chrome.driver",System.getenv("CHROMEDRIVER_PATH"));
+        System.setProperty("webdriver.chrome.driver","/Users/valentinahrend/Downloads/spind/src/main/resources/static/chromedriver");
         
         ChromeOptions options = new ChromeOptions();
-        options.setHeadless(true);
+       // options.setHeadless(true);
         
 
         driver = new ChromeDriver(options);
@@ -94,6 +94,8 @@ try{
    
    // System.out.println("!!"+src);
         
+        System.out.println("!!before get");
+
         try{
 
             driver.get("https://start.schulportal.hessen.de/index.php?i=5129");
@@ -114,7 +116,7 @@ try{
              String datas = (String) ((JavascriptExecutor)driver).executeScript("return ("+code+")");
 
         
-
+            Thread.sleep(333);
             driver.close();
             
              System.out.println("!!"+datas);
