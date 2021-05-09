@@ -78,6 +78,7 @@ try{
         //System.setProperty("webdriver.chrome.driver","/Users/valentinahrend/Downloads/spind/src/main/resources/static/chromedriver");
         
         ChromeOptions options = new ChromeOptions();
+        options.setBinary(System.getenv("GOOGLE_CHROME_BIN"));
         options.setHeadless(true);
         
 
