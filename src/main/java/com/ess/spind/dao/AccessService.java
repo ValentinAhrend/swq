@@ -14,6 +14,7 @@ import org.json.JSONObject;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.stereotype.Repository;
 
@@ -53,9 +54,14 @@ public class AccessService implements SDao{
     //    System.setProperty("webdriver.http.factory", "apache");
  
     
-        System.setProperty("webdriver.chrome.driver", getFileFromURL("static/chromedriver").getAbsolutePath());
-        driver = new ChromeDriver();
+     //   System.setProperty("webdriver.chrome.driver", getFileFromURL("static/chromedriver").getAbsolutePath());
         
+        
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("headless");
+
+        driver = new ChromeDriver();
+
     
         WebDriverWait wait = new WebDriverWait(driver, 10000);
     
