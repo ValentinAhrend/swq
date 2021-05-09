@@ -15,6 +15,7 @@ import java.net.URL;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.Duration;
 
 import com.ess.spind.model.S;
 
@@ -77,13 +78,13 @@ try{
         System.setProperty("webdriver.chrome.driver","/Users/valentinahrend/Downloads/spind/src/main/resources/static/chromedriver");
         
         ChromeOptions options = new ChromeOptions();
-       // options.setHeadless(true);
+        options.setHeadless(true);
         
 
         driver = new ChromeDriver(options);
 
     
-        WebDriverWait wait = new WebDriverWait(driver, 10000);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(10000));
     
         String src;
         if(codec == null){
