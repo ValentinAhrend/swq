@@ -74,8 +74,8 @@ try{
     //    System.setProperty("webdriver.http.factory", "apache");
  
        
-        //System.setProperty("webdriver.chrome.driver",System.getenv("CHROMEDRIVER_PATH"));
-        System.setProperty("webdriver.chrome.driver","/Users/valentinahrend/Downloads/spind/src/main/resources/static/chromedriver");
+        System.setProperty("webdriver.chrome.driver",System.getenv("CHROMEDRIVER_PATH"));
+        //System.setProperty("webdriver.chrome.driver","/Users/valentinahrend/Downloads/spind/src/main/resources/static/chromedriver");
         
         ChromeOptions options = new ChromeOptions();
         options.setHeadless(true);
