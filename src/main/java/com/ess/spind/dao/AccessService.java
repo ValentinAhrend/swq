@@ -80,12 +80,14 @@ try{
         ChromeOptions options = new ChromeOptions();
         options.setBinary(System.getenv("GOOGLE_CHROME_BIN"));
         options.setHeadless(true);
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--no-sandbox");
         
 
         driver = new ChromeDriver(options);
 
     
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(10000));
+       // WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(10000));
     
         String src;
         if(codec == null){
