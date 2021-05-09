@@ -68,40 +68,19 @@ try{
 
     }
 
-    private String getPath(String s) {try{
-        
-        String c = getContent(s);
-
-        File f = s.endsWith("js")?File.createTempFile("js","js"):File.createTempFile("chromedriver","");
-
-        FileOutputStream fos = new FileOutputStream(f);
-        OutputStreamWriter writer = new OutputStreamWriter(fos);
-        BufferedWriter writer2 = new BufferedWriter(writer);
-        writer2.write(c);
-        writer2.close();
-
-        if(s.endsWith("er"))f.setExecutable(true);
-
-        return f.getAbsolutePath();
-    }catch(IOException ioe){
-        ioe.printStackTrace();
-        return null;
-    }
-    }
 
     private String init(String name, String pw){
     //    System.setProperty("webdriver.http.factory", "apache");
  
-        Path root = FileSystems.getDefault().getPath("").toAbsolutePath();
-        Path filePath = Paths.get(root.toString(),"src", "main", "resources", "static", "chromedriver");
-
-        System.setProperty("webdriver.chrome.driver",filePath.toString());
+       
+        System.setProperty("webdriver.chrome.driver",System.getenv("CHROMDRIVER_PATH"));
         
         
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("headless");
+        options.setHeadless(true);
+        
 
-        driver = new ChromeDriver();
+        driver = new ChromeDriver(options);
 
     
         WebDriverWait wait = new WebDriverWait(driver, 10000);
