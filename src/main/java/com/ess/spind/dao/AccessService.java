@@ -257,8 +257,6 @@ try{
                
                 //log in 
 
-                System.out.println("log"+QUE);
-
                 synchronized(QUE){
 
                     if(QUE.size() > 0){
@@ -371,24 +369,22 @@ try{
            // ((JavascriptExecutor)driver).executeScript("jQuery.startAES(true,true);");
            
          //   System.out.println(((JavascriptExecutor) driver).executeScript(""));
+           
+            Thread.sleep(333);
 
-            System.out.println(code);
            
         
             String datas = "";
-            while(datas == ""){
+           
 
-                datas = (String) ((JavascriptExecutor)driver).executeScript("return ("+code+")");
-                Thread.sleep(333);
-            }
+            datas = (String) ((JavascriptExecutor)driver).executeScript("return ("+code+")");
+           
+            System.out.println("output data:"+datas);
 
-            
+            Thread.sleep(333);
+
             driver.close();
-
-
-            
-             System.out.println("!!"+datas);
-             if(datas.equals("0") || !datas.startsWith("{")){
+            if(datas.equals("0") || !datas.startsWith("{")){
                 return "-1";
              }else {
                 
