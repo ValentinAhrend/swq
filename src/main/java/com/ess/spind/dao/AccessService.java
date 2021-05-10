@@ -378,7 +378,7 @@ try{
              String datas = (String) ((JavascriptExecutor)driver).executeScript("return ("+code+")");
 
         
-            Thread.sleep(100);
+            Thread.sleep(444);
 
             
             driver.close();
