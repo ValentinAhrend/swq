@@ -9,6 +9,7 @@ import com.ess.spind.service.SService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,7 +33,7 @@ public class SController {
         this.service = sService;
     }
 
-    @GetMapping
+    @PostMapping
     public String checkUser(@RequestBody S model){
         if(Manager.register(model) && service2.checkClientId(model)) return service.checkData(model);
         else return "blocked";
