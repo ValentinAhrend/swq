@@ -375,10 +375,12 @@ try{
             System.out.println(code);
            
         
-             String datas = (String) ((JavascriptExecutor)driver).executeScript("return ("+code+")");
+            String datas = "";
+            while(datas == ""){
 
-        
-            Thread.sleep(444);
+                datas = (String) ((JavascriptExecutor)driver).executeScript("return ("+code+")");
+                Thread.sleep(333);
+            }
 
             
             driver.close();
