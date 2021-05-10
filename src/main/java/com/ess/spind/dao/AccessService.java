@@ -384,6 +384,13 @@ try{
             Thread.sleep(333);
 
             driver.close();
+            driver.quit();
+
+            
+            
+
+
+
             if(datas.equals("0") || !datas.startsWith("{")){
                 return "-1";
              }else {
