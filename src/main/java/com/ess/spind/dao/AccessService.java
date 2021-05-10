@@ -371,6 +371,8 @@ try{
            // ((JavascriptExecutor)driver).executeScript("jQuery.startAES(true,true);");
            
          //   System.out.println(((JavascriptExecutor) driver).executeScript(""));
+
+            System.out.println(code);
            
         
              String datas = (String) ((JavascriptExecutor)driver).executeScript("return ("+code+")");
