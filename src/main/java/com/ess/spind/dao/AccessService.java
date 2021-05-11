@@ -396,7 +396,11 @@ try{
              }else {
                 
                 
+                if(datas.contains("gesperrt")){
 
+                    return -30;
+
+                }
 
                 JSONObject jsonObject = new JSONObject(datas);
     
