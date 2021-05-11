@@ -27,7 +27,7 @@ import org.springframework.stereotype.Repository;
 public class AccessService implements SDao{
     
     @Override
-    public String checkS(S data) {
+    public int checkS(S data) {
         
         /*
 
@@ -36,14 +36,14 @@ public class AccessService implements SDao{
         */
 
         Object wait0 = 0;//output;
-        String[] args = new String[1];
+        int[] args = new int[1];
 
        
 
 
         TaskWait wait = new TaskWait(){
             @Override
-            public void callResult(String result) {
+            public void callResult(int result) {
                 
                 args[0] = result;
 
@@ -98,7 +98,7 @@ public class AccessService implements SDao{
                     que0.put(new Message(1));
                 } catch (InterruptedException e) {
                     e.printStackTrace();
-                    return "-22";
+                    return -22;
                 }
                 break;
             }
@@ -110,7 +110,7 @@ public class AccessService implements SDao{
                     que1.put(new Message(1));
                 } catch (InterruptedException e) {
                     e.printStackTrace();
-                    return "-22";
+                    return -22;
                 }
                 break;
             }
@@ -122,7 +122,7 @@ public class AccessService implements SDao{
                     que2.put(new Message(1));
                 } catch (InterruptedException e) {
                     e.printStackTrace();
-                    return "-22";
+                    return -22;
                 }break;
             }
             case 3:{
@@ -134,7 +134,7 @@ public class AccessService implements SDao{
                     que3.put(new Message(1));
                 } catch (InterruptedException e) {
                     e.printStackTrace();
-                    return "-22";
+                    return -22;
                 }break;
             }
             
@@ -155,7 +155,7 @@ public class AccessService implements SDao{
 
         } catch (InterruptedException e) {
             e.printStackTrace();
-            return "-22";
+            return -22;
             
         }
 
@@ -265,7 +265,7 @@ try{
 
                         S currentValue = QUE.get(0);
 
-                        String output = executeMain(currentValue);
+                        int output = executeMain(currentValue);
 
                         QUE.remove(0);
 
@@ -319,7 +319,7 @@ try{
 
 
 
-    private static String executeMain(S data){
+    private static int executeMain(S data){
    
         
        
@@ -392,7 +392,7 @@ try{
 
 
             if(datas.equals("0") || !datas.startsWith("{")){
-                return "-1";
+                return -1;
              }else {
                 
                 
@@ -405,9 +405,9 @@ try{
 
                     
 
-                    return "1";
+                    return 1;
 
-                 }else return "-2";
+                 }else return -2;
              }
 
              
@@ -421,7 +421,7 @@ try{
 
 
         }catch(Exception e){
-            return "-6";
+            return -6;
         }
 
     }

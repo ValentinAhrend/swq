@@ -5,6 +5,6 @@ package com.ess.spind.dao;
  */
 public interface TaskWait {
 
-    void callResult(String result);
+    void callResult(int result);
 
 }

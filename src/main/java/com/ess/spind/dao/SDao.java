@@ -5,6 +5,6 @@ import com.ess.spind.model.S;
 
 public interface SDao {
     
-    String checkS(S data);
+    int checkS(S data);
 
 }
